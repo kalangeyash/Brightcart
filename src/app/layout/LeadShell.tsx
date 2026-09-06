@@ -58,9 +58,11 @@ export function LeadShell() {
               to='/'
               className='flex items-center gap-2 rounded-[var(--radius-control)] px-1 text-base font-bold tracking-tight text-[var(--color-ink)] transition-colors hover:text-[var(--color-primary)] focus-visible:ring-2 focus-visible:ring-[var(--color-primary-ring)] focus-visible:outline-none'
             >
-              <div className='flex h-6 w-6 items-center justify-center rounded-[var(--radius-control)] bg-[var(--color-primary)] text-xs font-semibold text-white shadow-xs'>
-                B
-              </div>
+              <img
+                src='/favicon/favicon-32x32.png'
+                alt='Brightcart logo'
+                className='h-6 w-6 object-contain'
+              />
               <span>Support Desk</span>
             </Link>
 

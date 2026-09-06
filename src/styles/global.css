@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  /* Surfaces — brand neutrals, unchanged */
+  --color-canvas: #ffffff;
+  --color-parchment: #f5f5f7; /* page background */
+  --color-pearl: #fafafc; /* zebra rows, inset panels */
+  --color-hairline: #e0e0e0; /* table dividers, card borders */
+  --color-control-line: #8e8e93; /* input & control borders — 3.26:1, the accessible one */
+
+  /* Text */
+  --color-ink: #1d1d1f; /* all primary text */
+  --color-ink-muted: #6e6e73; /* secondary text — 5.07:1. NOT the brand's #7a7a7a (4.29:1, fails) */
+  --color-ink-faint: #7a7a7a; /* fine print only, never body */
+  --color-on-dark: #ffffff;
+
+  /* Interactive — Deep Pine */
+  --color-primary: #1f4d3d;
+  --color-primary-hover: #296352;
+  --color-primary-ring: #296352;
+  --color-primary-soft: #e7f0eb;
+
+  /* Urgency — Ember Amber. One job. */
+  --color-urgent: #c1691b; /* fills, bars, icons, 3px rails — NOT small text */
+  --color-urgent-ink: #8a4a12; /* amber text — 6.8:1 on white */
+  --color-urgent-soft: #fbf0e4; /* chip background */
+
+  /* Breached / destructive */
+  --color-danger: #9b2c1f;
+  --color-danger-soft: #fbeae7;
+
+  /* Resolved / on track — reuses Pine so no third accent enters the system */
+  --color-good: #1f4d3d;
+  --color-good-soft: #e7f0eb;
+
+  /* Radius — one value, plus the pill */
+  --radius-control: 8px;
+  --radius-pill: 9999px;
+
+  /* The only shadow in the product */
+  --shadow-overlay: 0 8px 32px rgba(29, 29, 31, 0.16);
+}
+
+body {
+  font-family: 'Inter Variable', 'Inter var', Inter, system-ui, sans-serif;
+  font-feature-settings:
+    'cv05' 1,
+    'zero' 1;
+  background-color: var(--color-parchment);
+  color: var(--color-ink);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}

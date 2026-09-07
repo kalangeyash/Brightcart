@@ -310,7 +310,7 @@ export function TeamOverviewScreen() {
                       <TableCell className='tabular pl-4 text-xs font-semibold'>
                         <AttentionRail sla={item.sla} />
                         <Link
-                          to={`/tickets?id=${item.ticket.id}`}
+                          to={`/tickets/${encodeURIComponent(item.ticket.id)}`}
                           className='inline-flex items-center gap-1 text-[var(--color-primary)] hover:underline'
                         >
                           {item.ticket.id}

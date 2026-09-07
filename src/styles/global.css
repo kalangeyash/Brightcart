@@ -37,6 +37,30 @@
   --color-good: #1f4d3d;
   --color-good-soft: #e7f0eb;
 
+  /* shadcn/ui base tokens — mapped onto the brand palette above (CLAUDE.md §5.8).
+     These names are what every generated shadcn primitive references
+     (bg-popover, bg-muted, border-border, …). Without them Tailwind v4 emits
+     nothing, and components fall back to transparent/unstyled — which is what
+     left the dropdowns see-through. No new colours enter the system here. */
+  --color-background: #ffffff; /* canvas */
+  --color-foreground: #1d1d1f; /* ink */
+  --color-card: #ffffff; /* canvas */
+  --color-card-foreground: #1d1d1f; /* ink */
+  --color-popover: #ffffff; /* canvas — opaque menus/dialogs */
+  --color-popover-foreground: #1d1d1f; /* ink */
+  --color-primary-foreground: #ffffff; /* white on Pine */
+  --color-secondary: #fafafc; /* pearl */
+  --color-secondary-foreground: #1d1d1f; /* ink */
+  --color-muted: #fafafc; /* pearl */
+  --color-muted-foreground: #6e6e73; /* ink-muted */
+  --color-accent: #e7f0eb; /* primary-soft — hover/focus surface */
+  --color-accent-foreground: #1f4d3d; /* primary */
+  --color-border: #e0e0e0; /* hairline */
+  --color-input: #8e8e93; /* control-line */
+  --color-ring: #296352; /* primary-ring — focus ring is Pine */
+  --color-destructive: #9b2c1f; /* danger */
+  --color-destructive-foreground: #ffffff;
+
   /* Radius — one value, plus the pill */
   --radius-control: 8px;
   --radius-pill: 9999px;

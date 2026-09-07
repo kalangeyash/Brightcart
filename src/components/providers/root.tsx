@@ -4,8 +4,6 @@ import type { PropsWithChildren } from 'react';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import ThemeProvider from './theme';
-
 type TRootProvider = PropsWithChildren;
 
 export default function RootProvider({ children }: Readonly<TRootProvider>) {
@@ -21,9 +19,9 @@ export default function RootProvider({ children }: Readonly<TRootProvider>) {
       })
   );
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme='light'>{children}</ThemeProvider>
-    </QueryClientProvider>
-  );
+  // The Support Desk runs in a single branded light theme (03-screen-specs:
+  // "Support runs in a lit office on a day shift"). No theme provider — the
+  // brand tokens in styles/global.css are the only palette, and the class-based
+  // `dark:` variant never fires because no `.dark` class is ever applied.
+  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 }

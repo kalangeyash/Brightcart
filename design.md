@@ -1,15 +1,17 @@
 ---
 version: alpha
 name: Brightcart-design-analysis
-description: A photography-first interface that turns marketing into a museum gallery. Edge-to-edge product tiles alternate light and dark canvases, framed by SF Pro Display headlines with negative letter-spacing and a two-color accent pair — Ember Amber (#C1691B) primary, Deep Pine (#1F4D3D) secondary. UI chrome recedes so the product can speak — no decorative gradients, no shadows on chrome, only the one signature drop-shadow under product imagery resting on a surface.
+description: A photography-first interface that turns marketing into a museum gallery. Edge-to-edge product tiles alternate light and dark canvases, framed by SF Pro Display headlines with negative letter-spacing and a two-color accent pair — Deep Pine (#1F4D3D) primary, Ember Amber (#C1691B) secondary. UI chrome recedes so the product can speak — no decorative gradients, no shadows on chrome, only the one signature drop-shadow under product imagery resting on a surface.
 
 colors:
-  primary: "#C1691B"
-  primary-focus: "#D97F26"
-  primary-on-dark: "#E8A854"
-  secondary: "#1F4D3D"
-  secondary-focus: "#296352"
-  secondary-on-dark: "#5FA98A"
+  # Primary is Deep Pine (#1F4D3D). Ember Amber is the secondary accent, reserved
+  # for urgency in the Support Desk. See CLAUDE.md §5.1 for the inverted hierarchy.
+  primary: "#1F4D3D"
+  primary-focus: "#296352"
+  primary-on-dark: "#5FA98A"
+  secondary: "#C1691B"
+  secondary-focus: "#D97F26"
+  secondary-on-dark: "#E8A854"
   ink: "#1d1d1f"
   body: "#1d1d1f"
   body-on-dark: "#ffffff"
@@ -291,7 +293,7 @@ Store and shop surfaces retain the same chassis but switch modes. The product co
 **Key Characteristics:**
 - Photography-first presentation; UI recedes so the product can speak.
 - Alternating full-bleed tile sections: white/parchment ↔ near-black, with the color change itself acting as the section divider.
-- A two-color accent pair — Ember Amber (`{colors.primary}` — #C1691B) and Deep Pine (`{colors.secondary}` — #1F4D3D) — carries every interactive element between them. No third brand color exists, and the two are never blended.
+- A two-color accent pair — Deep Pine (`{colors.primary}` — #1F4D3D) and Ember Amber (`{colors.secondary}` — #C1691B) — carries every interactive element between them. No third brand color exists, and the two are never blended.
 - Two button grammars: tiny amber/pine pill CTAs (`{rounded.pill}`) and compact utility rects (`{rounded.sm}`).
 - SF Pro Display + SF Pro Text — negative letter-spacing at display sizes for the signature "Brightcart tight" headline feel.
 - Whisper-soft elevation used only when a product image needs to breathe — exactly one drop-shadow in the entire system.
@@ -303,12 +305,12 @@ Store and shop surfaces retain the same chassis but switch modes. The product co
 > **Source pages analyzed:** homepage, environment, store, iPhone 17 Pro buy page, accessories index. The color system is identical across all five surfaces; only the surface-mode mix differs.
 
 ### Brand & Accent
-- **Ember Amber** (`{colors.primary}` — #C1691B): The primary brand-level interactive color. Carries the main pill CTA ("Buy"), primary text links, and the focus ring root on light surfaces. A warm, burnt marigold rather than a bright candy orange — this is Brightcart's confident "click me" signal. Press state shifts to a slightly darker variant via the active scale transform rather than a hex change.
-- **Amber Focus** (`{colors.primary-focus}` — #D97F26): A marginally brighter sibling of Ember Amber, reserved for the keyboard focus ring on buttons (`outline: 2px solid`).
-- **Amber Glow** (`{colors.primary-on-dark}` — #E8A854): A lighter, brighter amber used on dark surfaces for in-copy links and inline callouts, where Ember Amber would lose contrast against the tile background.
-- **Deep Pine** (`{colors.secondary}` — #1F4D3D): The secondary brand-level interactive color. Carries the secondary pill CTA ("Learn more") and secondary text links — a dark, muted green that sits opposite Ember Amber in temperature, so the two read as a deliberate warm/cool pairing rather than one accent plus an afterthought.
-- **Pine Focus** (`{colors.secondary-focus}` — #296352): A marginally brighter sibling of Deep Pine, used for the keyboard focus ring on secondary buttons.
-- **Pine Mist** (`{colors.secondary-on-dark}` — #5FA98A): A lighter, brighter green used on dark surfaces for secondary in-copy links, where Deep Pine would lose contrast against the tile background.
+- **Deep Pine** (`{colors.primary}` — #1F4D3D): The primary brand-level interactive color. Carries primary buttons, text links, focus rings, and selected states — a dark, muted green that reads as Brightcart's confident "click me" signal. At 9.7:1 on white it is the stronger interactive colour of the pair. Press state shifts via the active scale transform rather than a hex change.
+- **Pine Focus** (`{colors.primary-focus}` — #296352): A marginally brighter sibling of Deep Pine, used for the keyboard focus ring on primary buttons (`outline: 2px solid`).
+- **Pine Mist** (`{colors.primary-on-dark}` — #5FA98A): A lighter, brighter green used on dark surfaces for in-copy links and inline callouts, where Deep Pine would lose contrast against the tile background.
+- **Ember Amber** (`{colors.secondary}` — #C1691B): The secondary accent — a warm, burnt marigold. In the storefront it carries the secondary pill CTA; in the Support Desk it is reserved for urgency alone (SLA chips, the breach tile, the attention rail) and never fills a button. It sits opposite Deep Pine in temperature, so the two read as a deliberate warm/cool pairing.
+- **Amber Focus** (`{colors.secondary-focus}` — #D97F26): A marginally brighter sibling of Ember Amber, used for the keyboard focus ring on secondary buttons.
+- **Amber Glow** (`{colors.secondary-on-dark}` — #E8A854): A lighter, brighter amber used on dark surfaces where Ember Amber would lose contrast against the tile background.
 
 ### Surface
 - **Pure White** (`{colors.canvas}` — #ffffff): The dominant canvas. Content, utility cards, store tiles, configurator grids.
@@ -445,7 +447,7 @@ Brightcart's whitespace is the product's pedestal. Every tile begins with at lea
 
 ### Buttons
 
-**`button-primary`** — The signature Brightcart action. Background `{colors.primary}` (Ember Amber #C1691B), text `{colors.on-primary}` in `{typography.body}` (SF Pro Text 17px / 400), rounded `{rounded.pill}` (full pill — capsule-shaped), padding 11px × 22px. The full-pill radius IS the brand action signal.
+**`button-primary`** — The signature Brightcart action. Background `{colors.primary}` (Deep Pine #1F4D3D), text `{colors.on-primary}` in `{typography.body}` (SF Pro Text 17px / 400), rounded `{rounded.pill}` (full pill — capsule-shaped), padding 11px × 22px. The full-pill radius IS the brand action signal.
 - Active state: `{component.button-primary-active}` — `transform: scale(0.95)` (the system-wide micro-interaction).
 - Focus state: `{component.button-primary-focus}` — 2px solid `{colors.primary-focus}` outline.
 
@@ -455,13 +457,13 @@ Brightcart's whitespace is the product's pedestal. Every tile begins with at lea
 
 **`button-pearl-capsule`** — Product-card secondary button. Background `{colors.surface-pearl}` (#fafafc), text `{colors.ink-muted-80}` in `{typography.caption}` (14px), 3px solid `{colors.divider-soft}` border (functions as a soft ring rather than a visible line), rounded `{rounded.md}` (11px), padding 8px × 14px.
 
-**`button-store-hero`** — A larger primary CTA used on store hero surfaces. Same Ember Amber + Paper White as `{component.button-primary}`, but with `{typography.button-large}` (18px / 300 — note the rare weight 300) and slightly more padding (14px × 28px). Used sparingly on the store landing.
+**`button-store-hero`** — A larger primary CTA used on store hero surfaces. Same Deep Pine + Paper White as `{component.button-primary}`, but with `{typography.button-large}` (18px / 300 — note the rare weight 300) and slightly more padding (14px × 28px). Used sparingly on the store landing.
 
 **`button-icon-circular`** — Floats over photography. 44 × 44px, background `{colors.surface-chip-translucent}` at ~64% alpha, icon in `{colors.ink}`, rounded `{rounded.full}`. Used for carousel controls, close buttons, and in-image controls (product image thumbnails on the iPhone buy page).
 
-**`text-link`** — Inline body links in `{colors.primary}` (Ember Amber). Underlined or non-underlined per context. A secondary variant, `text-link-secondary`, uses `{colors.secondary}` (Deep Pine) where a link should read as a secondary/alternate action rather than the main one.
+**`text-link`** — Inline body links in `{colors.primary}` (Deep Pine). Underlined or non-underlined per context. A secondary variant, `text-link-secondary`, uses `{colors.secondary}` (Ember Amber) where a link should read as a secondary/alternate action rather than the main one.
 
-**`text-link-on-dark`** — Inline body links on dark tiles in `{colors.primary-on-dark}` (Amber Glow #E8A854) — Ember Amber would lose contrast against `{colors.surface-tile-1}`.
+**`text-link-on-dark`** — Inline body links on dark tiles in `{colors.primary-on-dark}` (Pine Mist #5FA98A) — Deep Pine would lose contrast against `{colors.surface-tile-1}`.
 
 **`text-link-secondary-on-dark`** — Secondary inline links on dark tiles in `{colors.secondary-on-dark}` (Pine Mist #5FA98A) — Deep Pine would lose contrast against `{colors.surface-tile-1}`.
 
@@ -500,7 +502,7 @@ Error and validation states were not surfaced in the analyzed pages.
 ## Do's and Don'ts
 
 ### Do
-- Use `{colors.primary}` (Ember Amber #C1691B) for the main "click me" signal — the primary pill CTA, primary links, focus ring — and `{colors.secondary}` (Deep Pine #1F4D3D) for the secondary action alongside it. The two-color pair is deliberate; nothing else carries interactivity.
+- Use `{colors.primary}` (Deep Pine #1F4D3D) for the main "click me" signal — the primary pill CTA, primary links, focus ring — and `{colors.secondary}` (Ember Amber #C1691B) for the secondary action alongside it. The two-color pair is deliberate; nothing else carries interactivity.
 - Set headlines in `{typography.hero-display}` or `{typography.display-lg}` with negative letter-spacing (`-0.28 → -0.374px`) to get the signature "Brightcart tight" cadence.
 - Run body copy at `{typography.body}` (17px / 400 / 1.47 / -0.374px) — not 16px. The extra pixel defines the brand's reading pace.
 - Alternate `{component.product-tile-light}` (or parchment) and `{component.product-tile-dark}` for full-bleed section rhythm. The color change IS the divider.
@@ -510,7 +512,7 @@ Error and validation states were not surfaced in the analyzed pages.
 - Keep the global nav `{colors.surface-black}` (true black) — it's the only place pure black appears on most pages.
 
 ### Don't
-- Don't introduce a third accent color; every "click me" signal is either `{colors.primary}` (Ember Amber) or `{colors.secondary}` (Deep Pine), never anything else.
+- Don't introduce a third accent color; every "click me" signal is either `{colors.primary}` (Deep Pine) or `{colors.secondary}` (Ember Amber), never anything else.
 - Don't blend Ember Amber and Deep Pine into a gradient. They pair by sitting next to each other as flat, distinct colors — never mixed.
 - Don't add shadows to cards, buttons, or text — shadow is reserved for product imagery.
 - Don't use gradients as decorative backgrounds; atmosphere comes from photography.
@@ -518,7 +520,7 @@ Error and validation states were not surfaced in the analyzed pages.
 - Don't round full-bleed tiles — tiles are rectangular and edge-to-edge; the color change is the divider.
 - Don't tighten line-height below 1.47 for body copy — the editorial leading is part of the brand.
 - Don't mix radii grammars — use `{rounded.sm}` for compact utility, `{rounded.lg}` for utility cards, `{rounded.pill}` for pills, and nothing in between (except the rare `{rounded.md}` Pearl Button).
-- Don't use `{colors.primary-on-dark}` (Amber Glow) or `{colors.secondary-on-dark}` (Pine Mist) on light surfaces — they're dark-tile-only variants. Ember Amber and Deep Pine are for light surfaces.
+- Don't use `{colors.primary-on-dark}` (Pine Mist) or `{colors.secondary-on-dark}` (Amber Glow) on light surfaces — they're dark-tile-only variants. Deep Pine and Ember Amber are for light surfaces.
 
 ## Responsive Behavior
 

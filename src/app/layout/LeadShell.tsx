@@ -5,7 +5,7 @@
 import { useState } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
-import { Bell, LogOut, Search, Settings as SettingsIcon, Shield, User } from 'lucide-react';
+import { Bell, Search, Settings as SettingsIcon, Shield } from 'lucide-react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -35,13 +35,13 @@ export function LeadShell() {
     refetchInterval: 30_000
   });
 
-  const unassignedQuery = useQuery({
-    queryKey: ['unassigned-queue-count', location.search],
-    queryFn: () => api.getUnassignedQueue(),
-    refetchInterval: 30_000
-  });
-
-  const unassignedCount = unassignedQuery.data?.items.length ?? 9;
+  // Paired with the Unassigned nav link below — restore together if that nav returns.
+  // const unassignedQuery = useQuery({
+  //   queryKey: ['unassigned-queue-count', location.search],
+  //   queryFn: () => api.getUnassignedQueue(),
+  //   refetchInterval: 30_000
+  // });
+  // const unassignedCount = unassignedQuery.data?.items.length ?? 9;
   const isSyncUnhealthy = syncQuery.data != null && !syncQuery.data.healthy;
 
   return (
@@ -59,7 +59,7 @@ export function LeadShell() {
               className='flex items-center gap-2 rounded-[var(--radius-control)] px-1 text-base font-bold tracking-tight text-[var(--color-ink)] transition-colors hover:text-[var(--color-primary)] focus-visible:ring-2 focus-visible:ring-[var(--color-primary-ring)] focus-visible:outline-none'
             >
               <img
-                src='/favicon/favicon-32x32.png'
+                src='/Brightcart-primary-logo.png'
                 alt='Brightcart logo'
                 className='h-6 w-6 object-contain'
               />
@@ -82,7 +82,7 @@ export function LeadShell() {
                 Team Overview
               </NavLink>
 
-              <NavLink
+              {/* <NavLink
                 to='/unassigned'
                 className={({ isActive }) =>
                   cn(
@@ -97,7 +97,7 @@ export function LeadShell() {
                 <span className='tabular py-0.2 inline-flex items-center justify-center rounded-full border border-[var(--color-primary)]/20 bg-[var(--color-primary-soft)] px-1.5 text-xs font-semibold text-[var(--color-primary)]'>
                   {unassignedCount}
                 </span>
-              </NavLink>
+              </NavLink> */}
 
               <NavLink
                 to='/tickets'
@@ -271,17 +271,6 @@ export function LeadShell() {
                     <SettingsIcon className='h-4 w-4 text-[var(--color-ink-muted)]' />
                     <span>Settings</span>
                   </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to='/' className='cursor-pointer gap-2'>
-                    <User className='h-4 w-4 text-[var(--color-ink-muted)]' />
-                    <span>Switch view</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className='cursor-pointer gap-2 text-[var(--color-danger)] focus:text-[var(--color-danger)]'>
-                  <LogOut className='h-4 w-4' />
-                  <span>Sign out</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

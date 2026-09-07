@@ -52,6 +52,9 @@ export function AssignModal({ item, isOpen, onOpenChange }: AssignModalPropertie
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ['team-overview'] });
       void queryClient.invalidateQueries({ queryKey: ['unassigned-queue-count'] });
+      void queryClient.invalidateQueries({ queryKey: ['tickets'] });
+      // Refresh the ticket-detail view when the modal is opened from there.
+      void queryClient.invalidateQueries({ queryKey: ['ticket'] });
       onOpenChange(false);
       setSelectedAgentId('');
     }
